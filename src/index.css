@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    src: url("./assets/fonts/Arizonia-Regular.ttf");
+    font-family: title;
+}
+
+@font-face {
+    src: url("./assets/fonts/SourceSansPro-Regular.ttf");
+    font-family: title2;
+}
+
 :root {
     --pdd: 40px;
 }
@@ -48,4 +58,27 @@ body {
     :root {
         --pdd: 5px;
     }
+}
+
+/* _____________ SCROLL _ STYLES ________________ */
+.scroll-style {
+    scroll-behavior: smooth;
+}
+.scroll-style::-webkit-scrollbar {
+    width: 7px;
+    height: 5px;
+}
+
+.scroll-style::-webkit-scrollbar-thumb {
+    background: var(--c3);
+    border-radius: 4px;
+}
+
+.scroll-style::-webkit-scrollbar-thumb:hover {
+    background: var(--c3);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-style::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
 }

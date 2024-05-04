@@ -1,11 +1,14 @@
 :root {
-    --c1-bg: #226e56;
+    --c1: #226e56;
+    --c1-bg: var(--c1);
     --c1-txt: #f7f7f7;
 
-    --c2-bg: #ff9803;
+    --c2: #ff9803;
+    --c2-bg: var(--c2);
     --c2-txt: #f7f7f7;
 
-    --c3-bg: #2c3040;
+    --c3: #2c3040;
+    --c3-bg: var(--c3);
     --c3-txt: #f7f7f7;
 
     --c4-bg: #f7f7f7;
