@@ -27,7 +27,7 @@ export default function ModalSuccess() {
                         Mira la lista para que sepas cuanto falta
                     </p>
                     <Link
-                        to="/"
+                        to="../"
                         className="flex justify-center items-center gap-1 py-2 mt-3 bg-[--c1-bg] rounded transition hover:opacity-80"
                     >
                         <span>Ver cuanto falta</span>

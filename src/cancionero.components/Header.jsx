@@ -27,8 +27,8 @@ export default function Header() {
                         />
                     </Link>
                     <nav className="flex flex-col xs:flex-row items-center gap-2 sm:gap-3">
-                        <Option to="/" text="Canciones pedidas" icon={faMusic} />
-                        <Option to="/list" text="Pedir canción" icon={faPlus} />
+                        <Option to="./" text="Canciones pedidas" icon={faMusic} />
+                        <Option to="list" text="Pedir canción" icon={faPlus} />
                     </nav>
                 </div>
             </div>
@@ -38,7 +38,8 @@ export default function Header() {
 
 function Option({ to, text, icon }) {
     const { pathname } = useLocation();
-    const isActive = pathname === to;
+    const root = "/cancionero/";
+    const isActive = pathname.includes(root + to) || (to === "./" && pathname === root);
     return (
         <Link
             to={to}

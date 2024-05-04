@@ -8,7 +8,7 @@ import { Formik } from "formik";
 import { cls } from "../lib/utils";
 import * as Yup from "yup";
 import { isCedula } from "../lib/validations";
-import ModalSuccess from "../components/ModalSuccess";
+import ModalSuccess from "../cancionero.components/ModalSuccess";
 
 export default function New() {
     const { id } = useParams();
