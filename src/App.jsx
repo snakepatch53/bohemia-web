@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RouterCancionero from "./CancioneroRouter";
 import Home from "./views/Home";
 import Frontpage from "./views/Frontpage";
+import Menu from "./views/Menu";
 
 function App() {
     return (
@@ -10,6 +11,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/cancionero/*" element={<RouterCancionero />} />
+                <Route path="/comida" element={<Menu />} />
                 <Route path="/frontpage" element={<Frontpage />} />
             </Routes>
         </BrowserRouter>

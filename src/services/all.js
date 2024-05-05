@@ -54,3 +54,11 @@ export async function storageOrder(data) {
     });
     return response;
 }
+
+export async function getCategoriesAndFoods() {
+    const response = await fetchAdapter({
+        resource: _API_URL + "categories",
+        // printResponse: true,
+    });
+    return response;
+}
