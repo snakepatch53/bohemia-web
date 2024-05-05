@@ -28,7 +28,7 @@ export default function Home() {
                         textShadow: "0 -1px 1px #000, 0 1px 1px #000, 0 0 1px #000",
                     }}
                 >
-                    🫡 ¿Cómo que podemos ayudarte? 😉
+                    🫡 ¿Cómo podemos ayudarte? 😉
                 </h1>
                 <div className="grid sm:grid-cols-2 gap-10 mt-10">
                     <Item
