@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PageContent from "../components/PageContent";
 import { useEffect, useState } from "react";
 import { getOrders } from "../services/all";
-import { cls } from "../lib/utils";
+import { cls, detectOrderChanges, notificateNewOrders } from "../lib/utils";
 
 export default function Home() {
     const [orders, setOrders] = useState(null);
@@ -11,20 +11,30 @@ export default function Home() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        // showNotification({
+        //     title: "Cancionero App",
+        //     body: "Este es el cuerpo de la notificación",
+        // });
         setLoading(true);
         getOrders(pageUrl).then((response) => {
             setLoading(false);
             setOrders(response);
         });
 
+        let oldOrders = orders?.data;
+
         const interval = setInterval(() => {
             getOrders(pageUrl).then((response) => {
+                const newOrders = detectOrderChanges(oldOrders, response.data);
+                notificateNewOrders(newOrders);
+                oldOrders = response.data;
                 setOrders(response);
             });
-        }, 10000);
+            // }, 10000);
+        }, 5000);
 
         return () => clearInterval(interval);
-    }, [pageUrl]);
+    }, [pageUrl]); // eslint-disable-line
     let lastDate = null;
     return (
         <PageContent className="px-[--pdd] pt-5">
