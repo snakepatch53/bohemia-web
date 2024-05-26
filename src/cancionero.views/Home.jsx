@@ -15,6 +15,7 @@ export default function Home() {
         getOrders(pageUrl).then((response) => {
             setLoading(false);
             setOrders(response);
+            console.log(response);
         });
 
         const interval = setInterval(() => {
@@ -25,18 +26,41 @@ export default function Home() {
 
         return () => clearInterval(interval);
     }, [pageUrl]);
+    let lastDate = null;
     return (
         <PageContent className="px-[--pdd] pt-5">
             <section className="container flex items-center flex-col gap-3">
-                {orders?.data?.map((order) => (
-                    <Item
-                        key={order.id}
-                        number={order?.song?.id}
-                        title={order?.song?.artist + " - " + order?.song?.title}
-                        by={order?.client?.name}
-                        date={order.date_str}
-                    />
-                ))}
+                {orders?.data?.map((order) => {
+                    let Component = null;
+                    let date = new Date(order.created_at).toDateString();
+                    if (lastDate != date) {
+                        // get date whitout time
+                        lastDate = date;
+                        Component = (
+                            <h2
+                                className=" text-[--c3-bg] text-lg font-bold w-full text-center mb-4 capitalize "
+                                style={{
+                                    textShadow:
+                                        "1px 0 1px black, 0 1px 1px black, -1px 0 1px black, 0 -1px 1px black",
+                                }}
+                            >
+                                {order.date_str}
+                            </h2>
+                        );
+                    }
+                    // console.log(lastDate, order.created_at);
+                    return (
+                        <div className=" flex flex-col w-full " key={order.id}>
+                            {Component}
+                            <Item
+                                number={order?.song?.id}
+                                title={order?.song?.artist + " - " + order?.song?.title}
+                                by={order?.client?.name}
+                                date={order.date_diff}
+                            />
+                        </div>
+                    );
+                })}
             </section>
 
             <section className="container flex justify-center gap-2 pt-5 pb-10">
