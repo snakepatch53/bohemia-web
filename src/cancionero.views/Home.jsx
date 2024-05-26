@@ -15,7 +15,6 @@ export default function Home() {
         getOrders(pageUrl).then((response) => {
             setLoading(false);
             setOrders(response);
-            console.log(response);
         });
 
         const interval = setInterval(() => {
@@ -34,7 +33,6 @@ export default function Home() {
                     let Component = null;
                     let date = new Date(order.created_at).toDateString();
                     if (lastDate != date) {
-                        // get date whitout time
                         lastDate = date;
                         Component = (
                             <h2
@@ -48,7 +46,6 @@ export default function Home() {
                             </h2>
                         );
                     }
-                    // console.log(lastDate, order.created_at);
                     return (
                         <div className=" flex flex-col w-full " key={order.id}>
                             {Component}
